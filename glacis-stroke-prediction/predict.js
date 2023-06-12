@@ -22,7 +22,7 @@
 var sketch = function( p ) { 
   "use strict";
 
-  let class_list = ['regular', 'radial', 'concentric', 'scattered']
+  let class_list = ['regular', 'radial', 'concentric', 'scattered','regrad']
   let scale_sel;
   let text_scale;
   let text_model;
