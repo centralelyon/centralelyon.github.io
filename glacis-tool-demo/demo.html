@@ -25,17 +25,17 @@
 </head>
 <body>
   <div class="cell-container">
-    <div id="observablehq-viewof-traceWithOptions-e0364f31" style="margin-left:20px"></div>
+    <div id="observablehq-viewof-traceWithOptions" style="margin-left:20px"></div>
   </div>
   <div class="cell-container">
-    <div id="observablehq-viewof-tree-e0364f31" style="margin-top:100px"></div>
+    <div id="observablehq-viewof-tree" style="margin-top:100px"></div>
   </div>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css">
   <script type="module">
   import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
   import define from "https://api.observablehq.com/@liris/stroke-prediction-demo.js?v=3";
-  const traceWithOptionsContainer = document.querySelector("#observablehq-viewof-traceWithOptions-e0364f31");
+  const traceWithOptionsContainer = document.querySelector("#observablehq-viewof-traceWithOptions");
 
     // Wait for the iframe to load
     traceWithOptionsContainer.addEventListener("load", () => {
@@ -49,8 +49,8 @@
       }
     });
   new Runtime().module(define, name => {
-    if (name === "viewof traceWithOptions") return new Inspector(document.querySelector("#observablehq-viewof-traceWithOptions-e0364f31"));
-    if (name === "viewof tree") return new Inspector(document.querySelector("#observablehq-viewof-tree-e0364f31"));
+    if (name === "viewof traceWithOptions") return new Inspector(document.querySelector("#observablehq-viewof-traceWithOptions"));
+    if (name === "viewof tree") return new Inspector(document.querySelector("#observablehq-viewof-tree"));
     return ["strokeCanvas","Tree","TreeValue"].includes(name);
   });
   </script>
