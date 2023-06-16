@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Glacis Prediction Demo</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: flex-start;
+    }
+    .cell-container {
+      flex: 1;
+      height: 100vh;
+      overflow: hidden;
+      margin-left: auto;
+    }
+    .cell-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="cell-container">
+    <div id="observablehq-viewof-traceWithOptions-e0364f31" style="margin-left:20px"></div>
+  </div>
+  <div class="cell-container">
+    <div id="observablehq-viewof-tree-e0364f31" style="margin-top:100px"></div>
+  </div>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css">
+  <script type="module">
+  import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
+  import define from "https://api.observablehq.com/@liris/stroke-prediction-demo.js?v=3";
+  const traceWithOptionsContainer = document.querySelector("#observablehq-viewof-traceWithOptions-e0364f31");
+
+    // Wait for the iframe to load
+    traceWithOptionsContainer.addEventListener("load", () => {
+      const iframeDocument = traceWithOptionsContainer.contentDocument;
+
+      // Modify the styles within the embedded cell
+      const buttonsContainer = iframeDocument.querySelector(".observablehq-Inspector");
+      const buttons = buttonsContainer.getElementsByTagName("button");
+      for (let i = 0; i < buttons.length; i++) {
+        buttons[i].style.marginLeft = "10px"; // Adjust the margin-right value as needed
+      }
+    });
+  new Runtime().module(define, name => {
+    if (name === "viewof traceWithOptions") return new Inspector(document.querySelector("#observablehq-viewof-traceWithOptions-e0364f31"));
+    if (name === "viewof tree") return new Inspector(document.querySelector("#observablehq-viewof-tree-e0364f31"));
+    return ["strokeCanvas","Tree","TreeValue"].includes(name);
+  });
+  </script>
+</body>
+</html>
