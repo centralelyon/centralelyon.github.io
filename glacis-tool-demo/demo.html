@@ -6,8 +6,9 @@
   <style>
     body {
       margin: 25px;
-      display: flex;
-      align-items: flex-start;
+      display: inline-flex;
+      align-items: stretch;
+      border:solid 1px #ccc;
     }
     .cell-container {
       flex: 1;
@@ -23,10 +24,10 @@
 </head>
 <body>
   <div class="cell-container">
-    <div id="observablehq-viewof-traceWithOptions"></div>
+    <div id="observablehq-viewof-mainCanvas"></div>
   </div>
   <div class="cell-container">
-    <div id="observablehq-viewof-tree" style="margin-top: 100px;"></div>
+    <div id="observablehq-viewof-tree"></div>
   </div>
 
 
@@ -34,11 +35,11 @@
   <script type="module">
   import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
   import define from "https://api.observablehq.com/@liris/stroke-prediction-demo.js?v=3";
-  const traceWithOptionsContainer = document.querySelector("#observablehq-viewof-traceWithOptions");
+  const mainCanvasContainer = document.querySelector("#observablehq-viewof-mainCanvas");
 
     // Wait for the iframe to load
-    traceWithOptionsContainer.addEventListener("load", () => {
-      const iframeDocument = traceWithOptionsContainer.contentDocument;
+    mainCanvasContainer.addEventListener("load", () => {
+      const iframeDocument = mainCanvas.contentDocument;
 
       // Modify the styles within the embedded cell
       const buttonsContainer = iframeDocument.querySelector(".observablehq-Inspector");
@@ -48,7 +49,7 @@
       }
     });
   new Runtime().module(define, name => {
-    if (name === "viewof traceWithOptions") return new Inspector(document.querySelector("#observablehq-viewof-traceWithOptions"));
+    if (name === "viewof mainCanvas") return new Inspector(document.querySelector("#observablehq-viewof-mainCanvas"));
     if (name === "viewof tree") return new Inspector(document.querySelector("#observablehq-viewof-tree"));
     return ["strokeCanvas","Tree","TreeValue"].includes(name);
   });
