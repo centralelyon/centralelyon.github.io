@@ -36,19 +36,7 @@
   <script type="module">
   import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
   import define from "https://api.observablehq.com/@liris/stroke-prediction-demo.js?v=3";
-  const mainCanvasContainer = document.querySelector("#observablehq-viewof-mainCanvas");
 
-    // Wait for the iframe to load
-    mainCanvasContainer.addEventListener("load", () => {
-      const iframeDocument = mainCanvas.contentDocument;
-
-      // Modify the styles within the embedded cell
-      const buttonsContainer = iframeDocument.querySelector(".observablehq-Inspector");
-      const buttons = buttonsContainer.getElementsByTagName("button");
-      for (let i = 0; i < buttons.length; i++) {
-        buttons[i].style.marginLeft = "10px"; // Adjust the margin-right value as needed
-      }
-    });
   new Runtime().module(define, name => {
     if (name === "viewof mainCanvas") return new Inspector(document.querySelector("#observablehq-viewof-mainCanvas"));
     if (name === "viewof tree") return new Inspector(document.querySelector("#observablehq-viewof-tree"));
