@@ -28,6 +28,7 @@
   </div>
   <div class="cell-container">
     <div id="observablehq-viewof-tree"></div>
+    <div id="observablehq-viewof-table" style="width: fit-content;" ></div>
   </div>
 
 
@@ -51,7 +52,8 @@
   new Runtime().module(define, name => {
     if (name === "viewof mainCanvas") return new Inspector(document.querySelector("#observablehq-viewof-mainCanvas"));
     if (name === "viewof tree") return new Inspector(document.querySelector("#observablehq-viewof-tree"));
-    return ["strokeCanvas","Tree","TreeValue"].includes(name);
+    if (name === "viewof table") return new Inspector(document.querySelector("#observablehq-viewof-table"));
+    return ["strokeCanvas","Tree","TreeValue","generated_data"].includes(name);
   });
   </script>
 </body>
