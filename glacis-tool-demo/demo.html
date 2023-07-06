@@ -40,7 +40,7 @@
   new Runtime().module(define, name => {
     if (name === "viewof mainCanvas") return new Inspector(document.querySelector("#observablehq-viewof-mainCanvas"));
     if (name === "viewof tree") return new Inspector(document.querySelector("#observablehq-viewof-tree"));
-    if (name === "viewof table") return new Inspector(document.querySelector("#observablehq-viewof-dataTable"));
+    if (name === "viewof dataTable") return new Inspector(document.querySelector("#observablehq-viewof-dataTable"));
     return ["strokeCanvas","Tree","TreeValue"].includes(name);
   });
   </script>
