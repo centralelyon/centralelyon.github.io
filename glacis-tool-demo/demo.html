@@ -27,8 +27,9 @@
     <div id="observablehq-viewof-mainCanvas"></div>
   </div>
   <div class="cell-container">
-    <div id="observablehq-viewof-tree"></div>
+    <div id="observablehq-viewof-tree"  style="width: fit-content;"></div>
     <div id="observablehq-viewof-dataTable" style="width: fit-content;" ></div>
+    <div id="observablehq-selectQuery" style="margin-top: 50px;"></div>
   </div>
   <div class="cell-container">
     <div id="observablehq-chartView"></div>
@@ -44,6 +45,7 @@
     if (name === "viewof tree") return new Inspector(document.querySelector("#observablehq-viewof-tree"));
     if (name === "viewof dataTable") return new Inspector(document.querySelector("#observablehq-viewof-dataTable"));
     if (name === "chartView") return new Inspector(document.querySelector("#observablehq-chartView"));
+    if (name === "selectQuery") return new Inspector(document.querySelector("#observablehq-selectQuery"));
     return ["strokeCanvas","Tree","TreeValue"].includes(name);
   });
   </script>
